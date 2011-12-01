@@ -13,7 +13,6 @@ window.addEventListener( 'load', function ( ) {
 		map.generate( [ 0, 0 ], [ width, height ], function ( point, value ) {
 			var idx = ( point[ 1 ] * width + point[ 0 ] ) * 4;
 			var clr = Math.floor( ( value + 1 ) / 2 * 255 );
-			console.log(clr);
 			
 			buffer.data[ idx + 0 ] = clr;
 			buffer.data[ idx + 1 ] = clr;
