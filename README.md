@@ -1,5 +1,11 @@
 # JS.Perlin
 
+## Disclaimer
+
+If you want to use this library in a WebGL context, please consider using [this one][1] instead.
+
+[1]: https://github.com/ashima/webgl-noise
+
 ## Installation
 
 ```npm install js.perlin```
@@ -47,6 +53,6 @@ and / or make pull requests !
 
 ## Authors
 
-Implementation by Maël Nison, from Jeremy Cochoy's [paper][1].
+Implementation by Maël Nison, from Jeremy Cochoy's [paper][2].
 
-[1]: http://zenol.fr/dl/perlin_noise.pdf
+[2]: http://zenol.fr/dl/perlin_noise.pdf
