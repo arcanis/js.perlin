@@ -8,11 +8,13 @@ If you want to use this library in a WebGL context, please consider using [this 
 
 ## Installation
 
-```npm install js.perlin```
+**Warning :** This is a web-only package : it should not be used in a Node environment.
+
+```npm install wo-perlin```
 
 ## Usage
 
-- *new Perlin( [ table ] )*
+- *new PERLIN.Generator( [ table ] )*
 
 Returns a new generator instance. If `table` is set, then it will be used
 as random lookup table otherwise a random table will be generated.
@@ -30,26 +32,12 @@ range between `start` and `start+size`, with two parameters : the
 coordinates of the current pixel, and the related Perlin value.
 
 ```javascript
-var Perlin = require( 'js.perlin' ).Perlin;
+var generator = new PERLIN.Generator( );
 
-var map = new Perlin( );
-
-map.generate( [ 0, 0 ], [ 2, 2 ], function ( point, value ) {
+generator.generate( [ 0, 0 ], [ 2, 2 ], function ( point, value ) {
     console.log( point, value );
 } );
 ```
-
-## To do
-
-I need to :
-
-- Understand why implements Perlin.random as `Math.random( ) * 2 - 1`
-  just doesn't work.
-
-- Implement _real_ Perlin noises (standard & simplex).
-
-If you can help me on one of these two issues, please feel free to post an issue
-and / or make pull requests !
 
 ## Authors
 

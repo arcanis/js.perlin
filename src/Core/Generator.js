@@ -1,37 +1,48 @@
-function Perlin( table ) {
-	this._table = table || Perlin.makeTable( 255 );
+PERLIN.Generator = function ( table ) {
+
+	this._table = table || PERLIN.Generator.makeTable( 255 );
 	
 	this.octaves = 10;
 	this.frequency = .05;
 	this.persistence = .5;
-}
 
-Perlin.random = function ( ) {
-	return Math.random( );
 };
 
-Perlin.makeTable = function ( size ) {
+PERLIN.Generator.random = function ( ) {
+
+	return Math.random( );
+
+};
+
+PERLIN.Generator.makeTable = function ( size ) {
+
 	var result = [ ];
 	
 	for ( var n = 0; n < size; ++ n )
-		result[ n ] = Perlin.random( );
+		result[ n ] = PERLIN.Generator.random( );
 	
 	return result;
+
 };
 
-Perlin.cosineInterpolate = function ( a, b, t ) {
+PERLIN.Generator.cosineInterpolate = function ( a, b, t ) {
+
 	var c = ( 1 - Math.cos( t * Math.PI ) ) * .5;
 	
 	return ( 1 - c ) * a + c * b;
+
 };
 
-Perlin.prototype = {
+PERLIN.Generator.prototype = {
 	
 	_randify : function ( n ) {
+
 		return this._table[ Math.floor( n % this._table.length ) ];
+
 	},
 	
 	_noise : function ( point ) {
+
 		var value = 0;
 		
 		var dimensions = point.length;
@@ -39,9 +50,11 @@ Perlin.prototype = {
 			value = this._randify( Math.floor( value * 85000 ) + point[ dimension ] );
 		
 		return value;
+
 	},
 	
 	_smooth : function ( point, dimension ) {
+
 		if ( dimension < 0 )
 			return this._noise( point );
 		
@@ -57,10 +70,12 @@ Perlin.prototype = {
 		
 		point[ dimension ] = value;
 		
-		return Perlin.cosineInterpolate( a, b, fractional );
+		return PERLIN.Generator.cosineInterpolate( a, b, fractional );
+
 	},
 	
 	_perlin : function ( point ) {
+
 		var value = 0;
 		var amplitude = 1;
 		
@@ -86,9 +101,11 @@ Perlin.prototype = {
 		
 		var limiter = ( 1 - persistence ) / ( 1 - amplitude );
 		return value * limiter;
+
 	},
 	
 	_generate : function ( start, size, callback, dimension ) {
+
 		if ( dimension < 0 )
 			return callback( start, this._perlin( start ) );
 		
@@ -96,14 +113,15 @@ Perlin.prototype = {
 			this._generate( start, size, callback, dimension - 1 );
 		
 		start[ dimension ] -= size[ dimension ];
+
 		return null;
+
 	},
 	
 	generate : function ( start, size, callback ) {
+
 		this._generate( start, size, callback, start.length - 1 );
+
 	}
 	
 };
-
-if ( typeof ( exports ) !== 'undefined' )
-	exports.Perlin = Perlin;
