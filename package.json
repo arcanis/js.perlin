@@ -1,15 +1,16 @@
 {
-  "author": "Maël Nison <nison.mael@gmail.com> (http://www.arcastel.com/)",
-  "name": "wo-perlin",
+  "author": "Maël Nison <nison.mael@gmail.com> (http://www.arcanis.fr/)",
+  "name": "Js.Perlin",
   "description": "Perlin noise implementation",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "homepage": "http://github.com/arcanis/js.perlin/",
   "repository": {
     "type": "git",
     "url": "git://github.com/arcanis/js.perlin.git"
   },
   "dependencies": {
-    "uglify-js": "*"
+    "uglify-js": "*",
+    "glob": "*"
   },
   "scripts": {
     "build": "node utils/build.js"
