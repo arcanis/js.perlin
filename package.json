@@ -9,10 +9,11 @@
     "url": "git://github.com/arcanis/js.perlin.git"
   },
   "dependencies": {
-    "uglify-js": "*",
-    "glob": "*"
+    "execSync": "*",
+    "glob": "*",
+    "uglify-js": "*"
   },
   "scripts": {
-    "build": "node utils/build.js"
+    "build": "npm install && node utils/build.js"
   }
 }
