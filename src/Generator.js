@@ -39,7 +39,7 @@ PERLIN.Generator.prototype = {
 
     _randify : function ( n ) {
 
-	return this._table[ Math.floor( n % this._table.length ) ];
+	return this._table[ Math.floor( Math.abs( n ) % this._table.length ) ];
 
     },
 
