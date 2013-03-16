@@ -7,12 +7,7 @@ void main(void)
         gl_FragCoord.y / Window.y
     );
 
-    float noise = 1.0
-        * abs( snoise( coord ) )
-        * abs( snoise( coord * 2.0 ) )
-        * abs( snoise( coord * 4.0 ) )
-        * abs( snoise( coord * 8.0 ) )
-    ;
+    float noise = ( snoise( coord ) + 1.0 ) / 2.0;
 
     gl_FragColor = vec4(noise, 0.0, 0.0, 1.0);
 }
